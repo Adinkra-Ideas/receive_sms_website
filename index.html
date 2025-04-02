@@ -10,7 +10,7 @@
     <link rel="manifest" href="/images/favicon/site.webmanifest" />
     <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Free SMS Receiver | Temporary Numbers</title>
+    <title>Receive The SMS | Free Disposable Numbers</title>
     <style>
         /* CSS Styles */
         * {
@@ -75,7 +75,6 @@
                 50% { transform: translate(25%, 25%) rotate(3deg); }
                 100% { transform: translate(0, 0) rotate(0deg); }
             }
-
         nav {
             display: flex;
             justify-content: space-between;
@@ -83,7 +82,6 @@
             position: relative;
             z-index: 1;
         }
-
         .logo a {
             font-size: 1.8rem;
             font-weight: bold;
@@ -92,16 +90,13 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
             transition: opacity 0.3s ease;
         }
-
         .logo a:hover {
             opacity: 0.9;
         }
-
         .nav-links {
             display: flex;
             gap: 25px;
         }
-
         .nav-links a {
             text-decoration: none;
             color: rgba(255,255,255,0.9);
@@ -110,7 +105,6 @@
             padding: 8px 12px;
             border-radius: 4px;
         }
-
         .nav-links a:hover {
             background: rgba(255,255,255,0.1);
             transform: translateY(-2px);
@@ -127,38 +121,112 @@
             position: relative;
             z-index: 1;
         }
-
         .header-content h1 {
             font-size: 2.5rem;
             margin-bottom: 1.2rem;
             line-height: 1.3;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
         }
-
         .header-content p {
             font-size: 1.1rem;
             opacity: 0.9;
             letter-spacing: 0.5px;
         }
-
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
                 gap: 20px;
             }
-
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 15px;
             }
-
             .header-content {
                 margin-top: 40px;
             }
-
             .header-content h1 {
                 font-size: 2rem;
+            }
+        }
+
+        /* Promotional Section */
+        .promo-section {
+            background: linear-gradient(145deg, #f8faff, #e6f0ff);
+            padding: 40px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .promo-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .promo-heading {
+            color: #1a202c;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .promo-heading strong {
+            color: #1a56db;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .countries-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .country-tag {
+            background: rgba(74, 158, 255, 0.1);
+            color: #1a56db;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .security-note {
+            color: #718096;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.9em;
+        }
+
+        .highlight-text {
+            color: #48bb78;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .promo-heading {
+                font-size: 1.6rem;
+            }
+
+            .feature-card {
+                padding: 20px;
             }
         }
 
@@ -493,9 +561,9 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo"><a href="#">Receive SMS Online For Free</a></div>
+            <div class="logo"><a href="/">ReceiveTheSMS</a></div>
             <div class="nav-links">
-                <a href="#goto_first_USA_number_link_page">USA</a>
+                <a href="/USA">USA</a>
                 <a href="#countries">Netherlands</a>
                 <a href="#numbers">Sweden</a>
                 <a href="#numbers">Poland</a>
@@ -510,6 +578,63 @@
         </div>
     </header>
 
+    <section class="promo-section">
+        <div class="promo-content container">
+            <h2 class="promo-heading">
+                <strong>Global SMS Reception</strong> Protecting Your Privacy Worldwide
+            </h2>
+
+            <div class="countries-list">
+                <div class="country-tag">
+                    🇺🇸 USA
+                </div>
+                <div class="country-tag">
+                    🇨🇦 Canada
+                </div>
+                <div class="country-tag">
+                    🇬🇧 United Kingdom
+                </div>
+                <div class="country-tag">
+                    🇸🇪 Sweden
+                </div>
+                <div class="country-tag">
+                    🇫🇮 Finland
+                </div>
+                <div class="country-tag">
+                    🇧🇪 Belgium
+                </div>
+                <div class="country-tag">
+                    🇳🇱 Netherlands
+                </div>
+                <div class="country-tag">
+                    ...
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🛡️ Secure Verification</h3>
+                    <p>Use our disposable numbers for online services' verifications without revealing your personal information</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🌐 Global Access</h3>
+                    <p>Receive SMS from anywhere using our international temporary phone numbers</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>⏳ Auto-Refresh</h3>
+                    <p>Numbers automatically cycle on <span class="highlight-text">regular intervals</span> for continued privacy</p>
+                </div>
+            </div>
+
+            <p class="security-note">
+                🔒 All messages are automatically deleted as they get replaced by newer batches.
+                <span class="highlight-text">No logs kept · No personal data stored · Complete anonymity</span>
+            </p>
+        </div>
+    </section>
+
     <main class="container">
         <section class="countries">
             <div class="country-card">
@@ -518,7 +643,7 @@
                 </div>
                 <h3 class="country-name">United States</h3>
                 <p class="number-count">📱 25+ Active Numbers</p>
-                <a href="#usa-numbers" class="view-numbers-btn">View Numbers</a>
+                <a href="/USA" class="view-numbers-btn">View Numbers</a>
             </div>
 
             <div class="country-card">
@@ -630,17 +755,8 @@
             </div>
         </section>
 
-        <!--<section class="numbers-list">
-            <div class="number-item">
-                <div>
-                    <h3>+1 555-123-4567</h3>
-                    <p>Operator: Verizon | Region: California</p>
-                </div>
-                <button class="copy-btn">Copy</button>
-            </div>-->
-            <!-- Add more number items here -->
-<!--        </section>-->
 
+        <!--  How It Works Section -->
         <section class="how-it-works">
             <div class="steps-container">
                 <h2 class="section-title">How to Receive SMS Online</h2>
@@ -687,11 +803,13 @@
 
     </main>
 
+
+    <!-- footer-->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/" class="site-name">ReceiveTheSMS.com</a>
-                <p>Online SMS Reception Made Simple</p>
+                <p>Online Anonymous SMS Receiving Made Simple</p>
             </div>
 
             <div class="footer-contact">

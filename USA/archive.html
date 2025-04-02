@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/images/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>USA Phone Numbers - Receive The SMS | Free Disposable Numbers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem 0 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.03) 0,
+                    rgba(255, 255, 255, 0.03) 5%,
+                    transparent 5%,
+                    transparent 10%),
+                repeating-linear-gradient(-45deg,
+                    rgba(255, 255, 255, 0.03) 0,
+                    rgba(255, 255, 255, 0.03) 5%,
+                    transparent 5%,
+                    transparent 10%);
+            animation: waveAnimation 25s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(25%, 25%) rotate(3deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo a:hover { opacity: 0.9; }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            color: #4a9eff;
+        }
+
+        .header-content {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .header-flag {
+            width: 60px;
+            height: 40px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .header-content p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Number Cards */
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 282px));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .number-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            min-width: 250px;
+            max-width: 282px;
+        }
+
+        .number-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .status-dot {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(0.95); }
+        }
+
+        .status-active {
+            background: #48bb78;
+            box-shadow: 0 0 0 4px rgba(72, 187, 120, 0.15);
+        }
+
+        .status-expired {
+            background: #f56565;
+            box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.15);
+            animation: none;
+        }
+
+        .number-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .country-flag {
+            width: 40px;
+            height: 28px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .phone-number {
+            font-size: 1.25rem;
+            color: #1a202c;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-section {
+            border-top: 1px solid #f0f4f9;
+            padding-top: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .action-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .sms-link {
+            color: #4a9eff;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .sms-link:hover {
+            background: rgba(74, 158, 255, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #4a9eff, #1a56db);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(74, 158, 255, 0.25);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, #48bb78, #137333);
+        }
+
+        .copy-btn:disabled {
+            background: #e2e8f0;
+            color: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        /* Enhanced How It Works Section */
+        .how-it-works {
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+            padding: 4rem 0;
+            margin: 4rem -2rem;
+            border-radius: 2rem;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            color: #1a202c;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4a9eff, #1a56db);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #718096;
+            line-height: 1.7;
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: #f8faff;
+            color: #1a202c;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+            position: relative;
+            border-top: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                repeating-linear-gradient(45deg,
+                    rgba(74, 158, 255, 0.03) 0,
+                    rgba(74, 158, 255, 0.03) 5%,
+                    transparent 5%,
+                    transparent 10%),
+                repeating-linear-gradient(-45deg,
+                    rgba(74, 158, 255, 0.03) 0,
+                    rgba(74, 158, 255, 0.03) 5%,
+                    transparent 5%,
+                    transparent 10%);
+            animation: waveAnimation 20s linear infinite;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .footer-brand .site-name {
+            font-size: 1.5rem;
+            color: #1a56db;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-brand .site-name:hover {
+            color: #4a9eff;
+        }
+
+        .footer-contact a {
+            color: #1a56db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.25rem 0;
+            position: relative;
+        }
+
+        .footer-contact a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4a9eff;
+            transition: width 0.3s ease;
+        }
+
+        .footer-contact a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .number-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-group {
+                flex-direction: column;
+            }
+
+            .copy-btn,
+            .sms-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .how-it-works {
+                margin: 2rem -1rem;
+                padding: 2rem 1rem;
+                border-radius: 1rem;
+            }
+
+            .step-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo"><a href="/">ReceiveTheSMS</a></div>
+            <div class="nav-links">
+                <a href="/USA">USA</a>
+                <a href="#countries">Netherlands</a>
+                <a href="#numbers">Sweden</a>
+                <a href="#numbers">Poland</a>
+                <a href="#numbers">Finland</a>
+                <a href="#numbers">Germany</a>
+            </div>
+        </nav>
+
+        <div class="header-content container">
+            <h1>
+                <img src="/images/us-flag.png" alt="USA Flag" class="header-flag">
+                United States Phone Numbers
+            </h1>
+            <p>Secure Temporary Numbers for Anonymous SMS Verification</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="number-grid">
+            <!-- Active Number Card -->
+            <div class="number-card">
+                <span class="status-dot status-active"></span>
+                <div class="number-header">
+                    <img src="/images/us-flag-small.png" alt="USA Flag" class="country-flag">
+                    <div class="number-info">
+                        <h3 class="phone-number">+1 415 555 0135</h3>
+                    </div>
+                </div>
+                <div class="copy-section">
+                    <div class="action-group">
+                        <a href="#sms-messages" class="sms-link">
+                            <i class="fas fa-comment-dots"></i>
+                            View Messages
+                        </a>
+                        <button class="copy-btn">
+                            <i class="far fa-copy"></i>
+                            Copy Number
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expired Number Card -->
+            <div class="number-card">
+                <span class="status-dot status-expired"></span>
+                <div class="number-header">
+                    <img src="/images/us-flag-small.png" alt="USA Flag" class="country-flag">
+                    <div class="number-info">
+                        <h3 class="phone-number">+1 347 555 0182</h3>
+                    </div>
+                </div>
+                <div class="copy-section">
+                    <div class="action-group">
+                        <span class="sms-link"></span>
+                        <button class="copy-btn" disabled>
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="steps-container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Select a Number</h3>
+                        <p class="step-description">
+                            Choose from our list of available US numbers, refreshed every hour.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Use for Verification</h3>
+                        <p class="step-description">
+                            Enter the temporary number when requested by any service.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Receive Messages</h3>
+                        <p class="step-description">
+                            View incoming SMS instantly in your browser.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Stay Protected</h3>
+                        <p class="step-description">
+                            All messages are automatically deleted after 48 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content container">
+            <div class="footer-brand">
+                <a href="/" class="site-name">ReceiveTheSMS</a>
+                <p>Secure Anonymous SMS Reception</p>
+            </div>
+            <div class="footer-contact">
+                <p>Need assistance? Contact us:</p>
+                <a href="mailto:support@receivethesms.com">
+                    <i class="fas fa-envelope"></i>
+                    support@receivethesms.com
+                </a>
+                <div class="footer-links">
+                    <a href="/privacy-policy">
+                        <i class="fas fa-shield-alt"></i>
+                        Privacy Policy
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            © 2025 ReceiveTheSMS.com • All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Copy Functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            if(!button.disabled) {
+                const originalHTML = button.innerHTML;
+                button.addEventListener('click', () => {
+                    const number = button.closest('.number-card').querySelector('.phone-number').textContent;
+                    navigator.clipboard.writeText(number.trim());
+
+                    // Visual feedback
+                    button.innerHTML = `
+                        <i class="fas fa-check"></i>
+                        Copied!
+                    `;
+                    button.classList.add('copied');
+
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.classList.remove('copied');
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
