@@ -19,12 +19,11 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
         body {
             background-color: #f5f5f5;
             overflow-x: hidden;
+            margin: 0;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -34,14 +33,15 @@
         /* Header Styles */
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+                        url('/images/header-logo.avif');
             background-size: cover;
             background-position: center;
             color: white;
-            overflow: hidden;
             padding: 1.5rem 0 4rem 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
             border-bottom: 3px solid #4a9eff;
+            overflow: hidden;
         }
         /* Wave Animation Layer */
         header::before {
@@ -563,7 +563,7 @@
         <nav class="container">
             <div class="logo"><a href="/">ReceiveTheSMS</a></div>
             <div class="nav-links">
-                <a href="/USA">USA</a>
+                <a href="/countries.html">USA</a>
                 <a href="#countries">Netherlands</a>
                 <a href="#numbers">Sweden</a>
                 <a href="#numbers">Poland</a>
@@ -624,7 +624,7 @@
 
                 <div class="feature-card">
                     <h3>⏳ Auto-Refresh</h3>
-                    <p>Numbers automatically cycle on <span class="highlight-text">regular intervals</span> for continued privacy</p>
+                    <p>Numbers are changed on <span class="highlight-text">regular intervals</span> for continued privacy</p>
                 </div>
             </div>
 
@@ -643,7 +643,7 @@
                 </div>
                 <h3 class="country-name">United States</h3>
                 <p class="number-count">📱 25+ Active Numbers</p>
-                <a href="/USA" class="view-numbers-btn">View Numbers</a>
+                <a href="/countries.html" class="view-numbers-btn">View Numbers</a>
             </div>
 
             <div class="country-card">
@@ -819,7 +819,7 @@
                 </a>
 
                 <div class="footer-links">
-                    <a href="/privacy-policy">
+                    <a href="/privacy.html">
                         🔒 Privacy Policy
                     </a>
                 </div>
