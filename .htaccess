@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+
+    # SEO-FRIENDLY URL REWRITES
+    # if /countries/anytext is called, ()$ catches the anytext part,
+    # then it is retrieved using $1 which is then assigned to GET query
+    # key named 'slug' and used to call /countries.php?slug=anytext
+    RewriteRule ^views/countries/([a-zA-Z0-9-]+)/?$ views/countries.php?slug=$1 [L,QSA]
+    RewriteRule ^views/messages/([a-zA-Z0-9-]+)/?$ views/messages.php?slug=$1 [L,QSA]
+    # ADD MORE SEO Friendly URL for other PHP files here
+
+
+    # THIS SHOULD BE PLACED ON THE LAST LINE.
+    # It Rewrites any file that is requested without an extension to now have a .php extension
+    # PLACING IT ABOVE THE SEO-FRIENDLY URL REWRITES WILL CAUSE IT NOT TO WORK!
+    # Respect Commands asking to rewrite files
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    # Dont Respect Commands asking to rewrite directories
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ $1.php [NC,L]
+</IfModule>

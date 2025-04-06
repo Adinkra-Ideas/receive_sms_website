@@ -109,7 +109,6 @@
             transform: translateY(-2px);
             color: #4a9eff;
         }
-
         /* Header Content */
         .header-content {
             margin-top: 60px;
@@ -118,7 +117,7 @@
             margin-left: auto;
             margin-right: auto;
             position: relative;
-            z-index: 1;
+            z-index: 0;
         }
         .header-content h1 {
             font-size: 2.5rem;
@@ -131,23 +130,89 @@
             opacity: 0.9;
             letter-spacing: 0.5px;
         }
-        @media (max-width: 768px) {
+        /* Mobile Styles */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 2;
+        }
+        @media (max-width: 852px) {
+            header {
+                padding: 1rem 0 2rem 0;
+            }
+
             nav {
-                flex-direction: column;
-                gap: 20px;
+                padding: 0 15px;
             }
+
+            .logo a {
+                font-size: 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
             .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                width: 70%;
+                text-align: center;
+                transition: all 0.5s ease;
+                padding: 15px 0;
+                border-radius: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                gap: 10px;
             }
+
+            .nav-links.active {
+                right: 20px;
+                width: 90%;
+            }
+
+            .nav-links a {
+                padding: 12px;
+                margin: 0 15px;
+                background: rgba(255,255,255,0.05);
+                font-size: 0.95rem;
+            }
+
+            .nav-links a:hover {
+                transform: none;
+                background: rgba(255,255,255,0.1);
+            }
+
             .header-content {
-                margin-top: 40px;
+                margin-top: 30px;
+                padding: 0 15px;
             }
+
             .header-content h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .header-content p {
+                font-size: 1rem;
             }
         }
+        @media (max-width: 480px) {
+            .nav-links {
+                width: 80%;
+                right: -100%;
+            }
+
+            .nav-links.active {
+                right: 10px;
+            }
+        }
+
+
         /* Privacy Policy Specific Styles */
         .privacy-content {
             background: white;
@@ -348,13 +413,14 @@
     <header>
         <nav class="container">
             <div class="logo"><a href="/">ReceiveTheSMS</a></div>
+            <i class="fas fa-bars menu-toggle"></i>
             <div class="nav-links">
-                <a href="/countries">USA</a>
-                <a href="#countries">Netherlands</a>
-                <a href="#numbers">Sweden</a>
-                <a href="#numbers">Poland</a>
-                <a href="#numbers">Finland</a>
-                <a href="#numbers">Germany</a>
+                <a href="/views/countries/USA">USA</a>
+                <a href="/views/countries/NL">Netherlands</a>
+                <a href="/views/countries/SE">Sweden</a>
+                <a href="/views/countries/PL">Poland</a>
+                <a href="/views/countries/FI">Finland</a>
+                <a href="/views/countries/DE">Germany</a>
             </div>
         </nav>
 
@@ -452,5 +518,27 @@
             © 2025 ReceiveTheSMS.com • All Rights Reserved
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+        // Close menu on resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.querySelector('.nav-links').classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
