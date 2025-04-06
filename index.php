@@ -846,6 +846,10 @@ $countries = $builder['data'];
                 document.querySelector('.nav-links').classList.remove('active');
             }
         });
+        // Close menu on scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('.nav-links').classList.remove('active');
+        });
     </script>
 </body>
 </html>

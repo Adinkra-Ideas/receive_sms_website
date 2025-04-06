@@ -240,6 +240,11 @@ $phone = $builder['data'];
                 font-size: 1.8rem;
                 margin-bottom: 1rem;
             }
+            .header-flag {
+                display: block;
+                margin: auto;
+                width: 60px;
+            }
 
             .header-content p {
                 font-size: 1rem;
@@ -412,7 +417,11 @@ $phone = $builder['data'];
             .phone-number-header {
                 justify-content: center; /* Center content on mobile */
                 font-size: 1.2rem;
+                flex-direction: column;
+                gap: 0.2rem;
+                margin-bottom: 0.5rem;
             }
+
 
             .number-meta {
                 justify-content: center; /* Centers elements in flex container */
@@ -789,6 +798,10 @@ $phone = $builder['data'];
             if (window.innerWidth > 768) {
                 document.querySelector('.nav-links').classList.remove('active');
             }
+        });
+        // Close menu on scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('.nav-links').classList.remove('active');
         });
     </script>
 </body>

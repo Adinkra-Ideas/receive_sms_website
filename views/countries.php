@@ -236,6 +236,11 @@ $country = $builder['data'];
                 font-size: 1.8rem;
                 margin-bottom: 1rem;
             }
+            .header-flag {
+                display: block;
+                margin: auto;
+                width: 60px;
+            }
 
             .header-content p {
                 font-size: 1rem;
@@ -961,6 +966,10 @@ $country = $builder['data'];
             if (window.innerWidth > 768) {
                 document.querySelector('.nav-links').classList.remove('active');
             }
+        });
+        // Close menu on scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('.nav-links').classList.remove('active');
         });
     </script>
 </body>

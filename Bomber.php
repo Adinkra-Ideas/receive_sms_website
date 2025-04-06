@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname(__FILE__, 1) . '/models/Message.php';
+require_once dirname(__FILE__, 1) . '/models/UnsentSMS.php';
 
 // 2. Include your database connection file
 require_once dirname(__FILE__, 1) . '/config/Database.php';
@@ -11,6 +12,7 @@ $conn = $database->getConnection();
 
 // Instantiate required models
 $message = new Message($conn);
+$unsent_sms = new UnsentSMS($conn);
 
 
 // Get all active phone numbers
@@ -53,11 +55,14 @@ if ($phone_result->num_rows > 0) {
                     // Commit transaction
                     $conn->commit();
 
-                    // Distribute the sms to different active number
+                    // Send the sms to this active number on website
                     $message->sender = $sms_row['sender'];
                     $message->sms = $sms_row['sms'];
-
                     $message->create($number);
+
+                    // re-insert sms back to unsent_sms table,
+                    // but this time, as the newest sms
+                    $unsent_sms->create($sms_row['sender'], $sms_row['sms']);
                 } else {
                     // No SMS to process
                     $conn->rollback();
