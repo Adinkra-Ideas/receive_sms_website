@@ -38,7 +38,7 @@ class Message {
         $stmt->execute();
         $stmt->store_result();
 
-        // If the alias is found in countries, now retrieve the country_id and then use it to insert into phones table
+        // If the phone_id exists in phones, now retrieve the phone_id and then use it to insert into messages table
         if ($stmt->num_rows > 0) {
             $stmt->bind_result($this->phone_id);
             $stmt->fetch();
@@ -59,10 +59,10 @@ class Message {
 
             // Then insert data
             if( $stmt->execute() ) {
-
+                echo "statement execd ";
                 // Now after we've added a number, if the message count for this number
                 // exceeds $this->maxMessages, we trim it down to $this->maxMessages count
-                $this->trimMessagesToSpecifiedMaxCount($this->sender);
+                $this->trimMessagesToSpecifiedMaxCount($this->phone_id);
 
                 return true;
             }
@@ -72,10 +72,10 @@ class Message {
 
 
     // for trimming messages of a specific number to max 42
-    public function trimMessagesToSpecifiedMaxCount($theSender) {
+    public function trimMessagesToSpecifiedMaxCount($thePhoneId) {
         // 1. Check current message count
-        $countStmt = $this->conn->prepare("SELECT COUNT(*) AS count FROM messages WHERE sender = ?");
-        $countStmt->bind_param("s", $theSender);
+        $countStmt = $this->conn->prepare("SELECT COUNT(*) AS count FROM messages WHERE phone_id = ?");
+        $countStmt->bind_param("i", $thePhoneId);
         $countStmt->execute();
         $result = $countStmt->get_result();
         $row = $result->fetch_assoc();
@@ -87,12 +87,12 @@ class Message {
             $cutoffStmt = $this->conn->prepare("
                 SELECT message_id
                 FROM messages
-                WHERE sender = ?
+                WHERE phone_id = ?
                 ORDER BY message_id DESC
                 LIMIT 1 OFFSET ?
             ");
             $offset = $this->maxMessages - 1;
-            $cutoffStmt->bind_param("si", $theSender, $offset);
+            $cutoffStmt->bind_param("ii", $thePhoneId, $offset);
             $cutoffStmt->execute();
             $cutoffResult = $cutoffStmt->get_result();
 
@@ -104,10 +104,10 @@ class Message {
                 // 3. Delete older messages
                 $deleteStmt = $this->conn->prepare("
                     DELETE FROM messages
-                    WHERE sender = ?
+                    WHERE phone_id = ?
                     AND message_id < ?
                 ");
-                $deleteStmt->bind_param("si", $theSender, $trimOffFromId);
+                $deleteStmt->bind_param("ii", $thePhoneId, $trimOffFromId);
                 $deleteStmt->execute();
 
                 $deletedCount = $deleteStmt->affected_rows;
