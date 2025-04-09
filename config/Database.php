@@ -1,6 +1,6 @@
 <?php
-// Dont directly access this file
-//die;
+// IMPORTANT NOTE: SITE WONT CREATE NEW TABLES IF USING PHP 8.1 on cPANEL.
+// MUST CHANGE PHP VERSION TO 8.0
 
 class Database {
     private $host = 'localhost';
@@ -113,6 +113,24 @@ class Database {
                 // echo  "Table 'messages' created successfully\n";
             } else {
                 // echo  "Error creating table 'messages': " . $this->conn->error . "\n";
+            }
+        }
+
+
+        // Checking if database is new so it can create the required tables
+        $sql = "SELECT 1 FROM commented_blogs LIMIT 1";
+        if ($this->conn->query($sql) === FALSE) {
+            // Create commented_blogs table
+            $sql = "CREATE TABLE IF NOT EXISTS commented_blogs (
+                url_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                domainn VARCHAR(64) NOT NULL UNIQUE,
+                comment_time DATETIME NOT NULL
+            ) ENGINE=InnoDB";
+
+            if ($this->conn->query($sql) === TRUE) {
+                 echo  "Table 'commented_blogs' created successfully\n";
+            } else {
+                 echo  "Error creating table 'commented_blogs': " . $this->conn->error . "\n";
             }
         }
     }

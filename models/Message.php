@@ -59,7 +59,7 @@ class Message {
 
             // Then insert data
             if( $stmt->execute() ) {
-                echo "statement execd ";
+                // echo "statement execd ";
                 // Now after we've added a number, if the message count for this number
                 // exceeds $this->maxMessages, we trim it down to $this->maxMessages count
                 $this->trimMessagesToSpecifiedMaxCount($this->phone_id);

@@ -1,7 +1,4 @@
 <?php
-// Dont directly access this file
-//die;
-
 
 class Phone {
     // Database connection and table name

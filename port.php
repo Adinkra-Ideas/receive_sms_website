@@ -4,6 +4,7 @@
     require_once dirname(__FILE__, 1) . '/models/Phone.php';
     require_once dirname(__FILE__, 1) . '/models/Message.php';
     require_once dirname(__FILE__, 1) . '/models/UnsentSMS.php';
+    require_once dirname(__FILE__, 1) . '/models/CommentedBlogs.php';
 
     // 2. Include your database connection file
     require_once dirname(__FILE__, 1) . '/config/Database.php';
@@ -17,6 +18,7 @@
     $phone = new Phone($conn);
     $message = new Message($conn);
     $unsent_sms = new UnsentSMS($conn);
+    $commented_blogs = new CommentedBlogs($conn);
 
 
     // FOR ADDING A NEW COUNTRY
@@ -173,9 +175,27 @@
     }
 
 
+    // FOR ADDING A NEW COMMENTED BLOG'S DOMAIN
+    if ( isset($_GET['comment_url']) ) {
+        // Sanitize and get URL
+        $commentUrl = filter_input(INPUT_GET, 'comment_url', FILTER_SANITIZE_URL);
 
+        $result = $commented_blogs->create($commentUrl);
 
-
+        // Prepare response based on model result
+        if ($result['status'] === 'success') {
+            echo json_encode([
+                'status' => 'success',
+                'data' => $result['message']
+            ]);
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'data' => $result['message']
+            ]);
+        }
+        die;
+    }
 
 
 
@@ -564,6 +584,65 @@
                     <p>Check console for details</p>
                 `;
                 console.error('Status update failed:', error);
+            }
+        });
+    </script>
+
+
+    <!-- New Blog Comment Form -->
+    <br />
+    <br />
+    <h2>Submit COMMENTED BLOG URL</h2>
+    <form id="commentForm">
+        <div class="form-group">
+            <label for="commentDomain">Website Domain:</label>
+            <input type="text" id="commentDomain" name="comment_url" required
+                   placeholder="example.com" pattern="^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$">
+        </div>
+        <button type="submit">Submit Comment</button>
+    </form>
+    <div id="commentResponse"></div>
+    <script>
+        // Comment Form Handler
+        document.getElementById('commentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const responseDiv = document.getElementById('commentResponse');
+            responseDiv.innerHTML = '';
+
+            try {
+                const commentUrl = document.getElementById('commentDomain').value;
+
+                const response = await fetch(`/port?comment_url=${encodeURIComponent(commentUrl)}`, {
+                    method: 'GET'
+                });
+
+                // Handle response formatting
+                const contentType = response.headers.get('content-type') || '';
+                let result;
+
+                if (contentType.includes('application/json')) {
+                    result = await response.json();
+                } else {
+                    result = {
+                        success: response.ok,
+                        message: await response.text(),
+                        errors: []
+                    };
+                }
+
+                // Update UI based on response
+                responseDiv.className = 'success';
+                responseDiv.innerHTML = `
+                    <p>${result.message}</p>
+                `;
+            } catch (error) {
+                responseDiv.className = 'error';
+                responseDiv.innerHTML = `
+                    <h3>Request Failed!</h3>
+                    <p>${error.message}</p>
+                    <p>Check console for details</p>
+                `;
+                console.error('Comment submission error:', error);
             }
         });
     </script>
