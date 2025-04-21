@@ -43,7 +43,7 @@ $country = $builder['data'];
     <link rel="manifest" href="/images/favicon/site.webmanifest" />
     <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>USA Phone Numbers - Receive The SMS | Free Disposable Numbers</title>
+    <title><?= $country['name'] ?> Phone Numbers - Receive The SMS | Free Disposable Numbers</title>
     <style>
         /* CSS Styles */
         * {
