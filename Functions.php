@@ -49,45 +49,4 @@ function time_ago($datetime) {
     return 'just now';
 }
 
-function time_ago_SUSPENDED_BUT_WORKING($datetime) {
-    // Set Lagos timezone for all date/time operations
-    $lagos_tz = new DateTimeZone('Africa/Lagos');
-
-    // Convert input to DateTime object
-    $date = new DateTime($datetime, $lagos_tz);
-
-    // Get current time in Lagos timezone
-    $now = new DateTime('now', $lagos_tz);
-
-    // Calculate difference
-    $diff = $now->diff($date);
-
-    $absolute = $now->getTimestamp() - $date->getTimestamp();
-
-    if ($absolute < 1) {
-        return 'just now';
-    }
-
-    $intervals = [
-        ['year' => $diff->y],
-        ['month' => $diff->m],
-        ['week' => floor($diff->d / 7)],
-        ['day' => $diff->d % 7],
-        ['hour' => $diff->h],
-        ['minute' => $diff->i],
-        ['second' => $diff->s]
-    ];
-
-    foreach ($intervals as $interval) {
-        foreach ($interval as $unit => $value) {
-            if ($value > 0) {
-                $direction = ($date < $now) ? 'ago' : 'from now';
-                return "$value $unit" . ($value > 1 ? 's' : '') . " $direction";
-            }
-        }
-    }
-
-    return 'just now';
-}
-
 ?>
